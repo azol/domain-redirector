@@ -3,6 +3,7 @@ package app
 import (
 	"log"
 	"net/http"
+	"time"
 
 	"domain-redirector/internal/config"
 	"domain-redirector/internal/domain/redirect"
@@ -19,7 +20,7 @@ func NewServer(cfg config.Config, logger *log.Logger) *http.Server {
 	return &http.Server{
 		Addr:              cfg.ListenAddress,
 		Handler:           httpRouter,
-		ReadHeaderTimeout: 5,
+		ReadHeaderTimeout: 5 * time.Second,
 		ErrorLog:          logger,
 	}
 }
