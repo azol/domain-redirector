@@ -20,5 +20,6 @@ func NewServer(cfg config.Config, logger *log.Logger) *http.Server {
 		Addr:              cfg.ListenAddress,
 		Handler:           httpRouter,
 		ReadHeaderTimeout: 5,
+		ErrorLog:          logger,
 	}
 }
